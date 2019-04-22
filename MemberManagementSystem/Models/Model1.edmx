@@ -4,16 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MemberManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'MemberManagementSystem.dbo.MemberData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="MemberManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="MemberData">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Tel" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
@@ -22,38 +16,25 @@ warning 6002: The table/view 'MemberManagementSystem.dbo.MemberData' does not ha
           <Property Name="Tel" Type="nchar" MaxLength="11" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MemberManagementSystemModelStoreContainer">
-          <EntitySet Name="MemberData" EntityType="Self.MemberData" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [MemberData].[ID] AS [ID], 
-    [MemberData].[Name] AS [Name], 
-    [MemberData].[Age] AS [Age], 
-    [MemberData].[Address] AS [Address], 
-    [MemberData].[Tel] AS [Tel]
-    FROM [dbo].[MemberData] AS [MemberData]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="MemberData" EntityType="Self.MemberData" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MemberManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MemberManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MemberData" EntityType="MemberManagementSystemModel.MemberData" />
+        </EntityContainer>
         <EntityType Name="MemberData">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Age" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Tel" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Tel" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Tel" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="MemberManagementSystemEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="MemberData" EntityType="Self.MemberData" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -63,11 +44,11 @@ warning 6002: The table/view 'MemberManagementSystem.dbo.MemberData' does not ha
           <EntitySetMapping Name="MemberData">
             <EntityTypeMapping TypeName="MemberManagementSystemModel.MemberData">
               <MappingFragment StoreEntitySet="MemberData">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

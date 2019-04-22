@@ -3,9 +3,42 @@
     ViewBag.Title = "Index";
 }
 
-@foreach(var member in Model)
-{
-    <h2>@member.Name</h2>
-}
+<h2>Member Data</h2>
+<button>@Html.ActionLink("Add New Member", "CreatMember")</button>
+
+<div>
+    <table border="1" width="500">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Address</td>
+                <td>Tel</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        @foreach (var member in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.Age</td>
+                    <td>@member.Address</td>
+                    <td>@member.Tel</td>
+                    <td>@Html.ActionLink("Edit", "EditMember", new {id= member.ID})</td>
+                    <td>@Html.ActionLink("Delete", "DeleteMember", new { id = member.ID})</td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+
+<span>@ViewBag.ServerVar</span>
+<h2>Edit Member</h2>
+
+
+
 
 
