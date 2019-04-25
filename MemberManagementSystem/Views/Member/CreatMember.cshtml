@@ -1,9 +1,9 @@
 ﻿@model MemberManagementSystem.Models.MemberData
 
-@using (Html.BeginForm("UpdateCreatData", "Member")) 
+@using (Html.BeginForm("UpdateCreatData", "Member"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>MemberData</h4>
         <hr />
@@ -51,3 +51,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+}

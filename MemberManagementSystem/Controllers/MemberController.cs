@@ -45,7 +45,7 @@ namespace MemberManagementSystem.Controllers
         {
             MemberData member = new MemberData();
             member = memberService.GetMemberByID(ID);
-            return PartialView(member);
+            return PartialView("EditMemberData",member);
         }
         #endregion
 

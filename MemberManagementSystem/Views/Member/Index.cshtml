@@ -3,6 +3,8 @@
     ViewBag.Title = "Index";
 }
 
+@Scripts.Render("~/bundles/jquery")
+
 <h2>Member Data</h2>
 <button>@Html.ActionLink("Add New Member", "CreatMember")</button>
 
@@ -26,17 +28,25 @@
                     <td>@member.Age</td>
                     <td>@member.Address</td>
                     <td>@member.Tel</td>
-                    <td>@Html.ActionLink("Edit", "EditMember", new {id= member.ID})</td>
-                    <td>@Html.ActionLink("Delete", "DeleteMember", new { id = member.ID})</td>
+                    <td><button onclick="editData(@member.ID)">Edit</button></td>
+                    <td>@Html.ActionLink("Delete", "DeleteMember", new { id = member.ID })</td>
                 </tr>
             </tbody>
         }
     </table>
 </div>
-
+<script>
+    var url = '@Url.Action("EditMember", "Member")';
+    function editData(id) {
+        $('#editMemberData').load(url, {ID : id});
+    }
+</script>
 
 <span>@ViewBag.ServerVar</span>
 <h2>Edit Member</h2>
+<div id="editMemberData"> </div>
+
+
 
 
 
